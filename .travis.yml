@@ -1,0 +1,16 @@
+language: node_js
+node_js:
+  - "8"
+cache:
+  directories:
+  - single-stream/lambda/node_modules
+  - multiple-streams/lambda/node_modules
+install:
+  - npm install bespoken-tools@alpha -g
+  - npm install codecov -g
+  - cd single-stream/lambda/dist && npm install && cd ../../..
+  - cd multiple-streams/lambda && npm install && cd ../..
+script:
+ - cd single-stream && bst test
+ - cd multiple-streams && bst test
+ - codecov
