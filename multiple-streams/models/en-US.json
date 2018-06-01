@@ -18,6 +18,11 @@
                     "samples": []
                 },
                 {
+                    "name": "AMAZON.ResumeIntent",
+                    "slots": [],
+                    "samples": []
+                },
+                {
                     "name": "PlayAudio",
                     "slots": [],
                     "samples": [

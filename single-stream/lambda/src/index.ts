@@ -9,10 +9,10 @@ import { AudioHandler } from './AudioHandlers';
 import { RadioRequestHandler } from './utils/RadioRequestHandler';
 import { SkillEventHandler } from './SkillEventHandler';
 import { CheckAudioInterfaceHandler } from './CanPlayAudioCheck';
-
+import { Logless} from "bespoken-tools";
 import { Constants } from './Constants';
 
-export async function handler(event: RequestEnvelope, context: any, callback: any): Promise<void> {
+async function baseHandler (event: RequestEnvelope, context: any, callback: any): Promise<void> {
 
     const factory = SkillBuilders.standard()
         .addRequestHandlers(
@@ -59,3 +59,6 @@ export async function handler(event: RequestEnvelope, context: any, callback: an
         return callback(error);
     }
 }
+
+const handler = Logless.capture("b1924888-fc1a-4e10-bbb1-7222a4908e35", baseHandler);
+export {handler};

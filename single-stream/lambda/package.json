@@ -14,7 +14,8 @@
   "author": "Sébastien Stormacq",
   "license": "See license in ../../LICENSE.txt",
   "dependencies": {
-    "ask-sdk": "^2.0.5"
+    "ask-sdk": "^2.0.5",
+    "bespoken-tools": "^1.2.10"
   },
   "devDependencies": {
     "@types/chai": "^4.1.3",
