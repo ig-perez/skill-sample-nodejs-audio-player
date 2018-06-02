@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/ig-perez/skill-sample-nodejs-audio-player.svg?branch=ContinuousIntegration)](https://travis-ci.org/ig-perez/skill-sample-nodejs-audio-player)
+[![codecov](https://codecov.io/gh/ig-perez/skill-sample-nodejs-audio-player/branch/ContinuousIntegration/graph/badge.svg)](https://codecov.io/gh/ig-perez/skill-sample-nodejs-audio-player)
+
 # Skill Sample NodeJS Audio Player
 
 This project demonstrates the use of Alexa Audio Player for skills.
