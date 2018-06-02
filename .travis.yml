@@ -8,7 +8,7 @@ install:
   - npm install bespoken-tools@beta -g
   - npm install codecov -g
   - cd single-stream/lambda && npm install
-  - cd src && node_modules/.bin/tsc && cd ../../..
+  - node_modules/.bin/tsc && cd ../..
   - cd multiple-streams/lambda && npm install && cd ../..
 script:
  - cd single-stream && bst test && cd ..
