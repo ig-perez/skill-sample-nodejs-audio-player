@@ -1,4 +1,4 @@
-
+[![Build Status](https://travis-ci.org/ig-perez/skill-sample-nodejs-audio-player.svg?branch=ContinuousIntegration)](https://travis-ci.org/ig-perez/skill-sample-nodejs-audio-player)
 # Audio Player Sample Project
 
 The Alexa Skills Kit now allows developers to build skills that play long-form audio content on Alexa devices.  This sample project demonstrates how to use the new interfaces for triggering playback of audio and handling audio player input events.
