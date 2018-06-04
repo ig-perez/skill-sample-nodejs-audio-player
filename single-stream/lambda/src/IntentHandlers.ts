@@ -3,7 +3,7 @@
 import { HandlerInput, RequestHandler, ResponseFactory } from 'ask-sdk';
 import { interfaces, Response, Request, IntentRequest, RequestEnvelope } from 'ask-sdk-model';
 
-import { IHandler } from './utils/iHandler';
+import { IHandler } from './utils/IHandler';
 import { Constants } from './Constants';
 import { audioData } from './AudioAssets';
 import { audio } from './AudioController';

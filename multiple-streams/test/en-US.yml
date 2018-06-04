@@ -5,17 +5,21 @@
 #  /___/_/\_\/_/_/_/   /_/  \__/___/\__/_/_//_/\_, /
 #                                             /___/
 #
-# Test type: Functional/End-to-End/Regression
+# Created by Bespoken
+# Learn more at https://read.bespoken.io/unit-testing/getting-started/
+#
 # Skill name: "Audio Player Multiple Streams" by Amazon
 # Test scope: LaunchRequest, AMAZON.PauseIntent, AMAZON.ResumeIntent, AMAZON.HelpIntent
 #             AMAZON.CancelIntent, AMAZON.StopIntent, AMAZON.StartOverIntent
+#             AMAZON.NextIntent, AMAZON.PreviousIntent
+# Description: Tests an AudioPlayer skill with multiple streams, with previous and next
 #=====================================================================================================================
 
 ---
 configuration:
   locale: en-US
   dynamo: mock
-  userId: amzn1.ask.account.123456
+  userId: mockUserID
 
 ---
 - test: "Sequence 01. Test scenario: launch request, no further interaction."
