@@ -10,7 +10,8 @@
 #
 # Skill name: "Audio Player Single Stream" by Amazon
 # Test scope: LaunchRequest (PlayAudio), AMAZON.PauseIntent, AMAZON.ResumeIntent, AMAZON.HelpIntent
-#             AMAZON.CancelIntent, AMAZON.StopIntent, AMAZON.StartOverIntent
+#             AMAZON.CancelIntent, AMAZON.StopIntent, AMAZON.StartOverIntent, AudioPlayer.PlaybackFinished
+#             AudioPlayer.PlaybackNearlyFinished, AudioPlayer.PlaybackFailed, SessionEndedRequest
 # Description: Tests single stream AudioPlayer skill
 #=====================================================================================================================
 
@@ -69,3 +70,65 @@ configuration:
 - test: "Sequence 07. Test scenario: Cancel intent."
 - resume:
 - cancel: "Goodbye"
+
+---
+- test: "Sequence 08. Test scenario: AudioPlayer.PlaybackFinished."
+- resume:
+- AudioPlayer.PlaybackFinished:
+  - response: ""
+
+---
+- test: "Sequence 09. Test scenario: AudioPlayer.PlaybackNearlyFinished."
+- resume:
+- AudioPlayer.PlaybackNearlyFinished:
+  - response.shouldEndSession: "true"
+  - response.directives[0].type: "AudioPlayer.Play"
+  - response.directives[0].playBehavior: "REPLACE_ALL"
+  - response.directives[0].audioItem.stream.url: "https://audio1.maxi80.com"
+  - response.directives[0].audioItem.metadata.title: "My Radio"
+  - response.directives[0].audioItem.metadata.subtitle: "Less bla bla bla, more la la la"
+  - response.directives[0].audioItem.metadata.art.contentDescription: "My Radio"
+  - response.directives[0].audioItem.metadata.art.sources[0].url: "https://alexademo.ninja/skills/logo-512.png"
+  - response.directives[0].audioItem.metadata.backgroundImage.contentDescription: "My Radio"
+  - response.directives[0].audioItem.metadata.backgroundImage.sources[0].url: "https://alexademo.ninja/skills/logo-512.png"
+
+---
+- test: "Sequence 10. Test scenario: AudioPlayer.PlaybackFailed."
+- resume:
+- AudioPlayer.PlaybackFailed:
+  - response: ""
+
+---
+- test: "Sequence 11. Test scenario: Handles SessionEndedRequest."
+- resume:
+- SessionEndedRequest:
+  - response: undefined
+
+---
+- test: "Sequence 12. Test scenario: Handles AMAZON.ShuffleOnIntent."
+- resume:
+- AMAZON.ShuffleOnIntent:
+  - intent: AMAZON.ShuffleOnIntent
+  - response.outputSpeech.ssml: "/.*this is radio, you can not do that.*/i"
+
+---
+- test: "Sequence 13. Test scenario: Handles AMAZON.ShuffleOffIntent."
+- resume:
+- AMAZON.ShuffleOffIntent:
+  - intent: AMAZON.ShuffleOffIntent
+  - response.outputSpeech.ssml: "/.*this is radio, you can not do that.*/i"
+
+---
+- test: "Sequence 14. Test scenario: Handles AMAZON.LoopOnIntent."
+- resume:
+- AMAZON.LoopOnIntent:
+  - intent: AMAZON.LoopOnIntent
+  - response.outputSpeech.ssml: "/.*this is radio, you can not do that.*/i"
+
+---
+- test: "Sequence 15. Test scenario: Handles AMAZON.LoopOffIntent."
+- resume:
+- AMAZON.LoopOffIntent:
+  - intent: AMAZON.LoopOffIntent
+  - response.outputSpeech.ssml: "/.*this is radio, you can not do that.*/i"
+
