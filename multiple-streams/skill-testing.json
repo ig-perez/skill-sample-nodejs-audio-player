@@ -3,7 +3,7 @@
   "locale": "en-US",
   "trace": false,
   "jest": {
-    "silent": false,
+    "silent": true,
     "collectCoverageFrom": [
       "**/index.js"
     ]
