@@ -93,3 +93,49 @@ configuration:
   - response.outputSpeech.ssml: "You have reached the end of the playlist"
   - response.shouldEndSession: undefined
   - response.directives[0].type: "AudioPlayer.Stop"
+
+---
+- test: "Sequence 07. Test scenario: Handles AMAZON.ShuffleOnIntent."
+- LaunchRequest: "*"
+- "begin podcast": "*"
+- AMAZON.ShuffleOnIntent:
+  - intent: AMAZON.ShuffleOnIntent
+  - response.outputSpeech.ssml: "This is Episode"
+
+---
+- test: "Sequence 08. Test scenario: Handles AMAZON.ShuffleOffIntent."
+- LaunchRequest: "*"
+- "begin podcast": "*"
+- AMAZON.ShuffleOffIntent:
+  - intent: AMAZON.ShuffleOffIntent
+  - response.outputSpeech.ssml: "This is Episode"
+
+---
+- test: "Sequence 09. Test scenario: Handles AMAZON.LoopOnIntent."
+- LaunchRequest: "*"
+- "begin podcast": "*"
+- AMAZON.LoopOnIntent:
+  - intent: AMAZON.LoopOnIntent
+  - response.outputSpeech.ssml: "/.*sorry, this is not a valid command.*/i"
+
+---
+- test: "Sequence 10. Test scenario: Handles AMAZON.LoopOffIntent."
+- LaunchRequest: "*"
+- "begin podcast": "*"
+- AMAZON.LoopOffIntent:
+  - intent: AMAZON.LoopOffIntent
+  - response.outputSpeech.ssml: "/.*sorry, this is not a valid command.*/i"
+
+---
+- test: "Sequence 11. Test scenario: Start audio, previous track till the beginning of the list"
+- LaunchRequest: "*"
+- "begin podcast": "*"
+- previous: "*"
+- previous: "You have reached the start of the playlist"
+
+---
+- test: "Sequence 12. Test scenario: Start audio, next track till the end of the list"
+- LaunchRequest: "*"
+- "begin podcast": "*"
+- next: "*"
+- next: "You have reached the end of the playlist"
