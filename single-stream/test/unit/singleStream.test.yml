@@ -83,7 +83,7 @@ configuration:
 - AudioPlayer.PlaybackNearlyFinished:
   - response.shouldEndSession: true
   - response.directives[0].type: AudioPlayer.Play
-  - response.directives[0].playBehavior: REPLACE_ALL
+  - response.directives[0].playBehavior: REPLACE_ENQUEUED
   - response.directives[0].audioItem.stream.url: https://audio1.maxi80.com
   - response.directives[0].audioItem.metadata.title: My Radio
   - response.directives[0].audioItem.metadata.subtitle: Less bla bla bla, more la la la
